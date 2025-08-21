@@ -13,15 +13,25 @@ set -ouex pipefail
 #
 # input-remapper: Allows me to remap button on my trackballs.
 dnf5 install --setopt=install_weak_deps=False -y \
-     distrobox \
-     input-remapper \
-     libvirt \
-     libvirt-daemon-kvm
+    distrobox \
+    input-remapper \
+    libvirt \
+    libvirt-daemon-kvm
 
 # I use the Firefox flatpak so the system installed version is unnecessary.
 dnf5 remove -y \
-     firefox \
-     firefox-langpacks
+    firefox \
+    firefox-langpacks
+
+flatpak -y uninstall \
+    org.gnome.Calculator \
+    org.gnome.Characters \
+    org.gnome.Calendar
+
+# Enable the Flathub flatpak repository. Trying to enable third-part repositories
+# inside of a virtual machine seems to lock up Silverblue on my system so I just
+# brute force it here.
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Use a COPR Example:
 #
