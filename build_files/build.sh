@@ -13,12 +13,15 @@ set -ouex pipefail
 #
 # input-remapper: Allows me to remap button on my trackballs.
 dnf5 install --setopt=install_weak_deps=False -y \
-     input-remapper
+     distrobox \
+     input-remapper \
+     libvirt \
+     libvirt-daemon-kvm
 
 # I use the Firefox flatpak so the system installed version is unnecessary.
 dnf5 remove -y \
-  firefox \
-  firefox-langpacks
+     firefox \
+     firefox-langpacks
 
 # Use a COPR Example:
 #
@@ -30,3 +33,6 @@ dnf5 remove -y \
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+
+systemctl enable input-remapper.service
+systemctl enable libvirtd.service
