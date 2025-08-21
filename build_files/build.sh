@@ -23,11 +23,6 @@ dnf5 remove -y \
     firefox \
     firefox-langpacks
 
-flatpak -y uninstall \
-    org.gnome.Calculator \
-    org.gnome.Characters \
-    org.gnome.Calendar
-
 # Enable the Flathub flatpak repository. Trying to enable third-part repositories
 # inside of a virtual machine seems to lock up Silverblue on my system so I just
 # brute force it here.
