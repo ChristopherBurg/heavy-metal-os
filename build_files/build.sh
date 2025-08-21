@@ -9,8 +9,16 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+# The following package are installed.
+#
+# input-remapper: Allows me to remap button on my trackballs.
+dnf5 install --setopt=install_weak_deps=False -y \
+     input-remapper
+
+# I use the Firefox flatpak so the system installed version is unnecessary.
+dnf5 remove -y \
+  firefox \
+  firefox-langpacks
 
 # Use a COPR Example:
 #
