@@ -10,8 +10,6 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # The following package are installed.
-#
-# input-remapper: Allows me to remap button on my trackballs.
 dnf5 install --setopt=install_weak_deps=False -y \
     distrobox \
     input-remapper \
@@ -22,11 +20,6 @@ dnf5 install --setopt=install_weak_deps=False -y \
 dnf5 remove -y \
     firefox \
     firefox-langpacks
-
-# Enable the Flathub flatpak repository. Trying to enable third-part repositories
-# inside of a virtual machine seems to lock up Silverblue on my system so I just
-# brute force it here.
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Use a COPR Example:
 #
